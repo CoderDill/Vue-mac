@@ -1,7 +1,7 @@
 <template>
-  <form>
-      <label>Name</label>
-      <input type="text" v-model="name"/>
+  <form @sumbit.prevent="sendData">
+      <label>Username</label>
+      <input type="text" v-model="username"/>
       <label>Age</label>
       <input type="number" v-model="age"/>
   </form>
@@ -11,8 +11,13 @@
 export default {
     data() {
         return {
-            name: '',
+            username: '',
             age: ''
+        }
+    },
+    methods: {
+        sendData() {
+            this.$emit('form-data', this.username, this.age)
         }
     }
 }
