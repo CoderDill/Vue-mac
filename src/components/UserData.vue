@@ -1,28 +1,31 @@
 <template>
-  <form @sumbit.prevent="sendData">
-      <label>Username</label>
-      <input type="text" v-model="username"/>
+  <section>
+    <form @submit.prevent="sendData">
+      <label>name</label>
+      <input type="text" v-model="enteredName" />
       <label>Age</label>
-      <input type="number" v-model="age"/>
-  </form>
+      <input type="text" v-model="enteredAge" />
+      <button>Enter Data</button>
+    </form>
+  </section>
 </template>
 
 <script>
 export default {
-    data() {
-        return {
-            username: '',
-            age: ''
-        }
+  emits: ['form-data'],
+  data() {
+    return {
+      enteredName: "",
+      enteredAge: "",
+    };
+  },
+  methods: {
+    sendData() {
+      this.$emit('form-data', this.enteredName, this.enteredAge);
     },
-    methods: {
-        sendData() {
-            this.$emit('form-data', this.username, this.age)
-        }
-    }
-}
+  },
+};
 </script>
 
 <style>
-
 </style>

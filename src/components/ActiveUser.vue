@@ -1,17 +1,24 @@
 <template>
-  <div>
-      <h2>{{ username }}</h2>
-      <h3>{{ age }}</h3>
-  </div>
+  <section>
+    <h2>{{ username }}</h2>
+    <h3>{{ userage }} years</h3>
+  </section>
 </template>
 
 <script>
 export default {
-    username: '',
-    age: ''
-}
+  props: {
+    username: {
+      type: String,
+      required: true,
+    },
+    userage: {
+      type: Number,
+      required: true,
+    },
+  },
+};
 </script>
 
-<style>
-
+ <style>
 </style>
